@@ -1,16 +1,16 @@
 <template>
   <div
-    ref="element"
-    class="custom-select"
-    :class="{ 'custom-select--disabled': disabled, 'custom-select--loading': loading }"
+    ref="baseSelect"
+    class="base-select"
+    :class="{ 'base-select--disabled': disabled, 'base-select--loading': loading }"
   >
-    <div class="custom-select__label">{{ label }}</div>
+    <div class="base-select__label">{{ label }}</div>
 
-    <div class="custom-select__wrapper">
-      <div class="custom-select__input">
+    <div class="base-select__wrapper">
+      <div class="base-select__input">
         <span
           v-if="!searching && modelValue"
-          class="custom-select__selected"
+          class="base-select__selected"
           @click.stop="searching = true"
         >
           {{ modelValue?.label }}
@@ -31,26 +31,26 @@
           @click="expanded = true"
         />
 
-        <span v-if="loading" class="custom-select__icon">
-          <span class="custom-select__rotating"></span>
+        <span v-if="loading" class="base-select__icon">
+          <span class="base-select__rotating"></span>
         </span>
-        <span v-else-if="!disabled" role="button" class="custom-select__icon" @click="clear">
-          <span class="custom-select__close">✕</span>
+        <span v-else-if="!disabled" role="button" class="base-select__icon" @click="clear">
+          <span class="base-select__close">✕</span>
         </span>
 
-        <span class="custom-select__icon" @click="expanded = true">
+        <span class="base-select__icon" @click="expanded = true">
           <span
-            class="custom-select__arrow"
-            :class="{ 'custom-select__arrow--expanded': expanded }"
+            class="base-select__arrow"
+            :class="{ 'base-select__arrow--expanded': expanded }"
           ></span>
         </span>
       </div>
 
-      <div v-if="expanded && optionList.length" class="custom-select__dropdown">
+      <div v-if="expanded && optionList.length" class="base-select__dropdown">
         <div
           v-for="option in optionList"
           :key="option.value"
-          class="custom-select__option"
+          class="base-select__option"
           @click="selectOption(option)"
         >
           {{ option.label }}
@@ -72,7 +72,7 @@ export interface Option {
 export type RemoteMethod = (search: string) => Promise<Option[]>;
 
 interface Props {
-  modelValue: Option;
+  modelValue: Option | null;
   remoteMethod: RemoteMethod;
   options?: Option[];
   placeholder?: string;
@@ -86,7 +86,7 @@ const emit = defineEmits<{
   (e: 'update:model-value', option: Option | null): void;
 }>();
 
-const element = ref<Element>();
+const baseSelect = ref<Element>();
 const search = ref<string | null>(null);
 const searching = ref<boolean>(true);
 const optionList = ref<Option[]>([]);
@@ -109,7 +109,7 @@ const selectOption = (option: Option) => {
 };
 
 const handleClickOutside = (event: Event) => {
-  if (element.value && !element.value.contains(event.target as Node)) {
+  if (baseSelect.value && !baseSelect.value.contains(event.target as Node)) {
     expanded.value = false;
     searching.value = false;
   }
@@ -156,7 +156,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
-.custom-select {
+.base-select {
   width: 100%;
   position: relative;
 
@@ -274,7 +274,7 @@ onBeforeUnmount(() => {
     }
   }
 
-  .custom-select__selected {
+  .base-select__selected {
     width: 100%;
     cursor: pointer;
     transition: color 0.2s;

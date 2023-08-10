@@ -24,7 +24,7 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
-const value = ref();
+const value = ref<Option | null>(null);
 const loading = ref(false);
 
 const mapGeoData = <T extends ICountry | IRegion | ICity>(
