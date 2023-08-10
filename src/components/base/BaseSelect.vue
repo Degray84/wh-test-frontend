@@ -126,10 +126,11 @@ watch(
 
 watch(
   () => props.disabled,
-  dis => {
-    if (!dis) {
+  isDisabled => {
+    if (!isDisabled) {
       searchRemote('');
     } else {
+      search.value = null;
       expanded.value = false;
     }
   },
