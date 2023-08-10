@@ -1,45 +1,34 @@
-# wh-test-frontend
+# Тестовое задание
 
-This template should help get you started developing with Vue 3 in Vite.
+Создание базового компонента select для выбора страны, региона и города. Список регионов должен браться на основании выбранной страны,а список стран на основании выбранного региона.
 
-## Recommended IDE Setup
+Тестовый проект использует api [RAPIDAPI](https://rapidapi.com/wirefreethought/api/geodb-cities/) для поиска стран, регионов и городов
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Для запуска проекта локально необходимы следующие переменные в .env файле
 
-## Type Support for `.vue` Imports in TS
+`VITE_API_URL` - эндпойнт для запросов api
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+`VITE_TOKEN` - токен для запросов к api
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Установка проекта
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Сервер разработки
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Проверка типа и компиляция для продакшена
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Проверка с помощью [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
