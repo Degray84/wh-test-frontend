@@ -10,6 +10,10 @@
 
 `VITE_TOKEN` - токен для запросов к api
 
+## Ссылки
+
+[Страница тестового задания на Github Pages]([https://linktodocumentation](https://degray84.github.io/wh-test-frontend/))
+
 ## Установка проекта
 
 ```sh
