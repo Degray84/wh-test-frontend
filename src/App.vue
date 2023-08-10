@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Option } from './components/base/BaseSelect.vue';
 import GeoSelect from './components/common/GeoSelect.vue';
-import { computed, reactive, watch } from 'vue';
+import { computed, onMounted, reactive, watch } from 'vue';
 
 interface GeoForm {
   country: Option | null;
@@ -27,6 +27,10 @@ watch(
   () => form.region,
   () => (form.city = null)
 );
+
+onMounted(() => {
+  document.title = 'Кацер | Тестовое задание';
+});
 </script>
 
 <template>
