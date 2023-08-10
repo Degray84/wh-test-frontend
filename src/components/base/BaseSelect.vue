@@ -116,6 +116,15 @@ const handleClickOutside = (event: Event) => {
 };
 
 watch(
+  () => props.modelValue,
+  value => {
+    if (!value && !props.disabled) {
+      searchRemote('');
+    }
+  }
+);
+
+watch(
   () => props.disabled,
   dis => {
     if (!dis) {
@@ -158,7 +167,6 @@ onBeforeUnmount(() => {
   &__input {
     position: relative;
     padding: 0 12px;
-    box-sizing: border-box;
     width: 100%;
     height: 36px;
     border: 1px solid lightgray;
@@ -243,8 +251,11 @@ onBeforeUnmount(() => {
     position: absolute;
     padding: 4px 0;
     z-index: 1;
-    top: 35px;
+    top: 40px;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
@@ -256,7 +267,7 @@ onBeforeUnmount(() => {
   }
 
   &__option {
-    padding: 4px 12px;
+    padding: 8px 12px;
 
     &:hover {
       background-color: #eee;

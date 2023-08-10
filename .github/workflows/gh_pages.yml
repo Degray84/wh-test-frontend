@@ -19,7 +19,6 @@ jobs:
         run: npm ci
 
       - name: Build
-
         run: |
           export VITE_API_URL=${{ secrets.VITE_API_URL }}
           export VITE_TOKEN=${{ secrets.VITE_TOKEN }}
